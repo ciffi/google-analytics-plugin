@@ -131,6 +131,7 @@ public class UniversalAnalyticsPlugin extends CordovaPlugin {
             String key = entry.getKey();
             String value = entry.getValue();
             //System.out.println("Setting tracker dimension slot " + key + ": <" + value+">");
+            tracker.setAnonymizeIp(true);
             tracker.send(new HitBuilders
                     .AppViewBuilder()
                     .setCustomDimension((Integer.parseInt(key)), value).build());
@@ -147,6 +148,7 @@ public class UniversalAnalyticsPlugin extends CordovaPlugin {
 
         if (null != screenname && screenname.length() > 0) {
             tracker.setScreenName(screenname);
+            tracker.setAnonymizeIp(true);
             tracker.send(new HitBuilders
                     .AppViewBuilder()
                     .build()
@@ -166,6 +168,7 @@ public class UniversalAnalyticsPlugin extends CordovaPlugin {
         addCustomDimensionsToTracker(tracker);
 
         if (null != category && category.length() > 0) {
+            tracker.setAnonymizeIp(true);
             tracker.send(new HitBuilders
                     .EventBuilder()
                     .setCategory(category)
@@ -189,6 +192,7 @@ public class UniversalAnalyticsPlugin extends CordovaPlugin {
         addCustomDimensionsToTracker(tracker);
 
         if (null != description && description.length() > 0) {
+            tracker.setAnonymizeIp(true);
             tracker.send(new HitBuilders
                     .ExceptionBuilder()
                     .setDescription(description)
@@ -210,6 +214,7 @@ public class UniversalAnalyticsPlugin extends CordovaPlugin {
         addCustomDimensionsToTracker(tracker);
 
         if (null != category && category.length() > 0) {
+            tracker.setAnonymizeIp(true);
             tracker.send(new HitBuilders
                     .TimingBuilder()
                     .setCategory(category)
@@ -233,6 +238,7 @@ public class UniversalAnalyticsPlugin extends CordovaPlugin {
         addCustomDimensionsToTracker(tracker);
 
         if (null != id && id.length() > 0) {
+            tracker.setAnonymizeIp(true);
             tracker.send(new HitBuilders
                     .TransactionBuilder()
                     .setTransactionId(id)
@@ -258,6 +264,7 @@ public class UniversalAnalyticsPlugin extends CordovaPlugin {
 
         if (null != id && id.length() > 0) {
 
+            tracker.setAnonymizeIp(true);
             tracker.send(new HitBuilders
                     .ItemBuilder()
                     .setTransactionId(id)
