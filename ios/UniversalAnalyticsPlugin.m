@@ -62,7 +62,7 @@
 
   id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
   [tracker set:@"&uid" value: userId];
-
+    
   pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
   [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
@@ -114,6 +114,10 @@
 
     [self addCustomDimensionsToTracker:tracker];
 
+    //ciffi - modifica per anonimizzare ip
+    [tracker set:kGAIAnonymizeIp value:@"1"];
+    //ciffi - modifica per anonimizzare ip
+    
     [tracker send:[[GAIDictionaryBuilder
     createEventWithCategory: category //required
          action: action //required
@@ -146,7 +150,11 @@
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
 
     [self addCustomDimensionsToTracker:tracker];
-
+    
+    //ciffi - modifica per anonimizzare ip
+    [tracker set:kGAIAnonymizeIp value:@"1"];
+    //ciffi - modifica per anonimizzare ip
+    
     [tracker send:[[GAIDictionaryBuilder
     createExceptionWithDescription: description
                                      withFatal: fatal] build]];
@@ -172,6 +180,10 @@
     [self addCustomDimensionsToTracker:tracker];
 
 
+    //ciffi - modifica per anonimizzare ip
+    [tracker set:kGAIAnonymizeIp value:@"1"];
+    //ciffi - modifica per anonimizzare ip
+    
     [tracker set:kGAIScreenName value:screenName];
     [tracker send:[[GAIDictionaryBuilder createAppView] build]];
 
@@ -210,6 +222,10 @@
 
     [self addCustomDimensionsToTracker:tracker];
 
+    //ciffi - modifica per anonimizzare ip
+    [tracker set:kGAIAnonymizeIp value:@"1"];
+    //ciffi - modifica per anonimizzare ip
+    
     [tracker send:[[GAIDictionaryBuilder
     createTimingWithCategory: category //required
          interval: intervalInMilliseconds //required
@@ -258,7 +274,10 @@
 
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
 
-
+    //ciffi - modifica per anonimizzare ip
+    [tracker set:kGAIAnonymizeIp value:@"1"];
+    //ciffi - modifica per anonimizzare ip
+    
     [tracker send:[[GAIDictionaryBuilder createTransactionWithId:transactionId             // (NSString) Transaction ID
                                                      affiliation:affiliation         // (NSString) Affiliation
                                                          revenue:revenue                  // (NSNumber) Order revenue (including tax and shipping)
@@ -314,7 +333,10 @@
         currencyCode = [command.arguments objectAtIndex:6];
 
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-
+    
+    //ciffi - modifica per anonimizzare ip
+    [tracker set:kGAIAnonymizeIp value:@"1"];
+    //ciffi - modifica per anonimizzare ip
 
     [tracker send:[[GAIDictionaryBuilder createItemWithTransactionId:transactionId         // (NSString) Transaction ID
                                                                 name:name  // (NSString) Product Name
